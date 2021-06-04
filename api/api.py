@@ -17,10 +17,11 @@ def latest_log_file():
 @app.route('/', methods=['GET'])
 def home():
     log_file = latest_log_file()
-    html = "<h1>Wake requests:</h1>\n"
+    html = ""
     with open(log_file) as f:
-        for line in reversed(f):
-            html+=f"<h2>{line}</h2>\n"
+        for line in f:
+            html = f"<h2>{line}</h2>\n{html}"
+    html = f"<h1>Wake requests:</h1>\n{html}"
     return html
 
 
