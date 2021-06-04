@@ -19,7 +19,7 @@ def home():
     log_file = latest_log_file()
     html = "<h1>Wake requests:</h1>\n"
     with open(log_file) as f:
-        for line in f:
+        for line in reversed(f):
             html+=f"<h2>{line}</h2>\n"
     return html
 
@@ -29,7 +29,7 @@ def home():
 def api_all():
     os.system("sudo etherwake -i eth0 00:D8:61:C4:51:6A")
     log_file = latest_log_file()
-    with open(log_file, 'w') as f:
+    with open(log_file, 'a') as f:
         f.write(f"Wake request submitted at {datetime.now()}\n")
     return jsonify(success=True)
 
