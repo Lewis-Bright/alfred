@@ -28,8 +28,8 @@ def home():
 @app.route('/api/v1/tasks/turn_on_pc/', methods=['POST'])
 def api_all():
     os.system("sudo etherwake -i eth0 00:D8:61:C4:51:6A")
-    latest_log_file = latest_log_file()
-    with open(latest_log_file, 'w') as f:
+    log_file = latest_log_file()
+    with open(log_file, 'w') as f:
         f.write(f"Wake request submitted at {datetime.now()}\n")
     return jsonify(success=True)
 
