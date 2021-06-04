@@ -5,7 +5,7 @@ from os.path import isfile, join
 from datetime import datetime
 import os
 
-log_folder = "logs"
+log_folder = os.path.join(os.path.dirname(__file__), "logs")
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
